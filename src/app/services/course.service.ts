@@ -53,7 +53,7 @@ export class CourseService {
 
 	deleteCourse(id: String): Observable<Course[]> {
 	  const apiUrl = `${environment.apiURL}/courses`;
-	  const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}/${id}`;
 	  return this.http.delete<any>(url)
 	    .map((response) => response)
 	    .catch((error: any) => Observable.throw(error.json().error || {message: 'Server Error'}));
