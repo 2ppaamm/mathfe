@@ -74,6 +74,14 @@ export class SkillService {
 			.catch((error: any) => throwError(error.error || { message: 'Server Error' }));
 	}
 
+	copySkill(id: number): Observable<Skill[]>{
+		
+		const apiUrl = `${environment.apiURL}/skills`;
+		const url = `${apiUrl}/${id}`+ `/copy`;
+		return this.http.post<any>(url, id)
+			.map((response) => response)
+			.catch((error: any) => throwError(error.error || { message: 'Server Error' }));
+	}
 
 	deleteSkill(id: String): Observable<Skill[]> {
 		const apiUrl = `${environment.apiURL}/skills`;

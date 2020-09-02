@@ -152,13 +152,14 @@
                     <div class="btn-group" role="group" aria-label="First group">
                       <a (click)="editSkill(skill.id)" class="btn btn-info"><i class="icon_pencil"></i></a>
                       <a (click)="openDialog(skill.id)" class="btn btn-danger"><i class="icon_minus_alt2"></i></a>
+                      <a (click)="copySkill(skill.id)" class="btn btn-success"><i class="fa fa-clone"></i></a>
                     </div>
                   </td>
                 </tr>
                 <tr class="panel-collapse collapse" id="collapse{{skill.id}}">
                   <td class="bg-light-grey" colspan="7">
                     <div *ngIf="skill.loadingQuestions" class="mat-table-spinner-wrapper">
-                      <div colspan="5" align="center" class="mat-table-spinner">
+                      <div colspan="5" align ="center" class="mat-table-spinner">
                         <mat-spinner color="#960000"></mat-spinner>
                       </div>
                     </div>
@@ -310,13 +311,6 @@ displayKatex(question.answer3, question.id, true, 'katexDiv_answer3' +
                       <tr *ngFor="let track of currentTracks">
                         <td>{{track.track}}</td>
                         <td>{{track.description}}</td>
-
-
-
-
-
-
-
                         <!-- <td>{{track.level.level}}</td>
                         <td>{{track.level.age}}</td>
                         <td>{{track.level.start_maxile_level}}</td>

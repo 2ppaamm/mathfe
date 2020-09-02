@@ -26,7 +26,7 @@ export class AdminSkillListComponent implements OnInit {
   // sort block
 
   public sortedByTitle: boolean = false;
-  public sortedByDescription: boolean = false;
+  public sortedByDescription: boolean = false; 
   public sortedByAuthor: boolean = false;
 
   public reversedByTitle: boolean = false;
@@ -103,6 +103,12 @@ export class AdminSkillListComponent implements OnInit {
       return this.beURL + url;
     }
     else return this.beURL + "/videos/skills/logo.mp4"
+  }
+
+  public copySkill(id: number) : void{
+    this.skillService.copySkill(id).subscribe(result =>{
+      //handle response
+    });
   }
 
   public editSkill(id: number): void {
