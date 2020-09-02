@@ -31,6 +31,7 @@
               "src/css/owl.carousel.css",
               "src/css/owl.theme.css",
               "src/assets/elegant-icons/style.css",
+              "src/assets/fontawesome-icons/font-awesome.min.css",
               "src/css/responsive.css",
               "src/css/styles.css"
             ],
@@ -122,6 +123,7 @@
               "src/css/nivo-lightbox.css",
               "src/css/owl.carousel.css",
               "src/css/owl.theme.css",
+              "src/assets/fontawesome-icons/font-awesome.min.css",
               "src/assets/elegant-icons/style.css",
               "src/css/responsive.css",
               "src/css/styles.css"
