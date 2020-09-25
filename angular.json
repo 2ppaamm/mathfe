@@ -18,7 +18,7 @@
             "polyfills": "src/polyfills.ts",
             "assets": [
               "src/assets",
-              "src/favicon.ico",
+              "src/images/favicon.ico",
               "src/images",
               "src/videos",
               "src/.htaccess"
@@ -128,7 +128,7 @@
             ],
             "assets": [
               "src/assets",
-              "src/favicon.ico",
+              "src/images/favicon.ico",
               "src/images",
               "src/videos"
             ]
