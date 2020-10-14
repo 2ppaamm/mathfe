@@ -93,7 +93,7 @@ export class AdminTrackListComponent implements OnInit {
 
   openViewSkills(trackid): void {
     const dialogRef = this.dialog.open(AdminHouseSkillsTrackListComponent, {
-      data: { trackid: trackid }
+      data: { trackid: trackid, type : 'track' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -121,7 +121,7 @@ export class AdminTrackListComponent implements OnInit {
   }
 
   deleteAllSkills(trackid) {
-    this.dialog.open(ConfirmDialogComponent, { data: { message: "Do you really want to delete all skills from this track? ", title: "Delete All Skills" } }).afterClosed().
+    this.dialog.open(ConfirmDialogComponent, { data: { message: 'Do you really want to delete all skills from this track ?', title: 'Delete All Skills' } }).afterClosed().
       subscribe(ifYes => {
         if (ifYes) {
           this.loading = true;

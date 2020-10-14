@@ -1,3 +1,4 @@
+import { quiz } from './../../models/quiz';
 import { Time } from '@angular/common';
 import { SkillService } from './../../services/skill.service';
 import { Component, OnInit } from '@angular/core';
@@ -6,7 +7,7 @@ import { Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
 import { QuizService } from 'app/services/quiz.service';
 import { EnrolmentService } from '../../services/enrolment.service';
-import { quiz } from 'app/models/quiz';
+// import { quiz } from 'app/models/quiz';
 import { Skill } from 'app/models/skill';
 import { HouseService } from 'app/services/house.service';
 
@@ -27,6 +28,9 @@ export class AdminQuizAddComponent implements OnInit {
   houses_array: any;
   houses = [];
   formData: any;
+
+  start_date;
+  end_date;
 
   constructor(
     private skillService: SkillService,
@@ -81,24 +85,9 @@ export class AdminQuizAddComponent implements OnInit {
 
   public addNewQuiz(quiz: quiz): void {
 
-    const current_start_available_date = new Date(quiz.start_available_time);
+    quiz.start_available_time = this.start_date;
 
-    const formatted_start_available_date = current_start_available_date.getFullYear() + "-" + ((current_start_available_date.getMonth() + 1) < 10 ? "0" + (current_start_available_date.getMonth() + 1) : (current_start_available_date.getMonth() + 1)) + "-" + (current_start_available_date.getDate() < 10 ? "0" + (current_start_available_date.getDate()) : current_start_available_date.getDate())
-      + ' ' + ('0' + current_start_available_date.getHours()).slice(-2) + ':' + ('0' + current_start_available_date.getMinutes()).slice(-2) + ':' + ('0' + current_start_available_date.getSeconds()).slice(-2);
-    const x = formatted_start_available_date.split(' ');
-    quiz.start_available_time = x[0] + ' ' + x[1];
-
-    // ------
-
-    const current_end_available_date = new Date(quiz.end_available_time);
-
-    const formatted_end_available_date = current_end_available_date.getFullYear() + "-" +
-      ((current_end_available_date.getMonth() + 1) < 10 ? "0" + (current_end_available_date.getMonth() + 1) : (current_end_available_date.getMonth() + 1)) + "-" +
-      (current_end_available_date.getDate() < 10 ? "0" + (current_end_available_date.getDate()) : current_end_available_date.getDate())
-      + ' ' + ('0' + current_end_available_date.getHours()).slice(-2) + ':' + ('0' + current_end_available_date.getMinutes()).slice(-2) + ':' + ('0' + current_end_available_date.getSeconds()).slice(-2);
-
-    const y = formatted_end_available_date.split(' ');
-    quiz.end_available_time = y[0] + ' ' + y[1];
+    quiz.end_available_time = this.end_date;
 
     var z = quiz.due_time.split('T');
 
@@ -118,5 +107,33 @@ export class AdminQuizAddComponent implements OnInit {
         }
       );
   }
+
+
+
+  changeDate(c_date, update) {
+
+    const date = new Date(c_date);
+    var time = new Date().toLocaleTimeString().split(':');
+
+    const hh = Number(time[0]) < 10 ? '0' + Number(time[0]) : Number(time[0]);
+    const mm = Number(time[1]) < 10 ? '0' + Number(time[1]) : Number(time[1]);
+    const sec = time[2].split(' ');
+    const ss = Number(sec[0]) < 10 ? '0' + Number(sec[0]) : Number(sec[0]);
+
+    const formatted_start_available_date = date.getFullYear() + '-' + ((date.getMonth() + 1) < 10 ? '0' + (date.getMonth() + 1) :
+    (date.getMonth() + 1)) + '-' + (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate())
+      + ' ' + hh + ':' + mm + ':' + ss;
+    const x = formatted_start_available_date.split(' ');
+
+    if (update === 'start_date') {
+
+      this.start_date = x[0] + ' ' + x[1];
+    } else if (update === 'end_date') {
+
+      this.end_date = x[0] + ' ' + x[1];
+    }
+
+  }
+
 
 }

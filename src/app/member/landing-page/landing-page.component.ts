@@ -63,7 +63,7 @@ export class LandingPageComponent implements OnInit {
     this.dashboardService.getUser().subscribe(
       data => {
         this.user = data;
-        // if (this.user["is_admin"] == 0) { 
+        // if (this.user["is_admin"] == 0) {
         // }
       },
       error => console.error(<any>error));
@@ -79,7 +79,7 @@ export class LandingPageComponent implements OnInit {
       this.validatePaypalButton();
     }
     if (this.place_value > 10) {
-      alert("Value can be not more than 10");
+
     } else {
       this.amount_due = this.price_value * this.place_value;
       this.numbers = Array(Number(this.place_value)).fill(0).map((x, i) => i);
@@ -210,7 +210,7 @@ export class LandingPageComponent implements OnInit {
         onClick: () => {
 
         },
-        // validate: (actions) => { 
+        // validate: (actions) => {
         // },
         experience: {
           noShipping: true,

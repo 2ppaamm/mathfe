@@ -63,13 +63,35 @@ export class AdminUserListComponent implements OnInit {
 
 
   add_RemoveAdmin(userId) {
+    this.resetUpdateStatus();
     let objIndex = this.users.findIndex((obj => obj.id === userId));
+    console.log(this.users);
     if (this.users[objIndex].is_admin === 1) {
 
       this.users[objIndex].is_admin = 0;
+      this.userService.admin(userId, {'is_admin': 0}).subscribe(
+
+        data => {
+          console.log();
+          this.userService.updateStatus = data['message'];
+          setTimeout(() => {
+            this.resetUpdateStatus();
+          }, 1500);
+        }
+      );
+
     } else if (this.users[objIndex].is_admin === 0) {
 
       this.users[objIndex].is_admin = 1;
+      this.userService.admin(userId, {'is_admin': 1}).subscribe(
+
+        data => {
+          this.userService.updateStatus = data['message'];
+          setTimeout(() => {
+            this.resetUpdateStatus();
+          }, 1500);
+        }
+      );
     }
 
   }
@@ -119,7 +141,7 @@ export class AdminUserListComponent implements OnInit {
 
 
   public diagnostic(id: Number, user): void {
-    this.dialog.open(ConfirmDialogComponent, { data: { message: "The next test this user will do is the diagnostic. Is that your intended " } }).afterClosed().
+    this.dialog.open(ConfirmDialogComponent, { data: { message: "The next test this user will do is the diagnostic. Is that your intention?" } }).afterClosed().
       subscribe(ifYes => {
         if (ifYes) {
           this.loading = true;

@@ -174,7 +174,8 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { AdminQuizAddComponent } from './admin/admin-quiz-add/admin-quiz-add.component';
 import { AdminQuizListComponent } from './admin/admin-quiz-list/admin-quiz-list.component';
 import { AdminQuizDeleteComponent } from './admin/admin-quiz-delete/admin-quiz-delete.component';
-import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.component'
+import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.component';
+import { AdminAddHouseComponent } from './admin/admin-track-list/modal/admin-add-house/admin-add-house.component'
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -278,6 +279,7 @@ export function tokenGetter() {
     AdminPermissionCreateComponent,
     AdminPermissionDeleteComponent,
     AdminAddSkillComponent,
+    AdminAddHouseComponent,
     AdminDifficultyListComponent,
     AdminDifficultyEditComponent,
     AdminDifficultyCreateComponent,
@@ -344,7 +346,7 @@ export function tokenGetter() {
   entryComponents: [DialogDeleteQuestion, AdminHouseDeleteComponent, AdminCourseDeleteComponent,
     ConfirmDialogComponent, AdminUserReportComponent, NotifyDialogComponent, AdminHouseTracksListComponent,
     AdminEnrollmentUserDetailModalComponent, AdminEnrollmentHouseDetailModalComponent, AdminAddTrackListComponent,
-    AdminHouseSkillsTrackListComponent, AdminAddSkillComponent],
+    AdminHouseSkillsTrackListComponent, AdminAddSkillComponent, AdminAddHouseComponent],
   providers: [TrackService, CourseService, QuestionService, DashboardService,
     HouseService, FieldService, TypeService, UnitService, PermissionService, LevelService,
     DifficultyService, RoleService,
