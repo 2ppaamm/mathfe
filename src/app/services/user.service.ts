@@ -28,6 +28,17 @@ export class UserService {
       .map((response) => response)
       .catch((error: any) => throwError(error.error || { message: 'Server Error' }));
   }
+
+
+  admin(userId: Number, admin): Observable<User[]> {
+
+    const apiUrl = `${environment.apiURL}/users`
+    const url = `${apiUrl}/${userId}`;
+    return this.http.put<any[]>(url, admin)
+      .map((response) => response)
+      .catch((error: any) => throwError(error.error || { message: 'Server Error' }));
+  }
+
   deleteUser(id: String): Observable<User[]> {
     const apiUrl = `${environment.apiURL}/users`
     const url = `${apiUrl}/${id}`;

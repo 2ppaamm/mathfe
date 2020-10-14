@@ -38,6 +38,7 @@ export class CourseService {
 			.map((response) => response['course'])
 			.catch((error: any) => throwError(error || { message: 'Server Error' }));
 	}
+
 	updateCourse(course: FormData, id: number): Observable<Course[]> {
 		const apiUrl = `${environment.apiURL}/courses`;
 		const url = `${apiUrl}/${id}`;

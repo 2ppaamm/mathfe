@@ -41,10 +41,12 @@
                   <!-- <option *ngFor="let quiz of quizzes; let i = index" [value]="quiz.diagnostic">
                     {{quiz.diagnostic}}
                   </option> -->
-                  <option *ngFor="let item of diagnostic_number(10);let i = index;" [value]="i+1"
+                  <!-- <option *ngFor="let item of diagnostic_number(10);let i = index;" [value]="i+1"
                     [selected]="quizObj.diagnostic == i">
                     {{i+1}}
-                  </option>
+                  </option> -->
+                  <option value="1">True</option>
+                  <option value="0">False</option>
                 </select>
                 <div *ngIf="diagnostic.errors?.required && diagnostic.touched" class="alert alert-danger">
                   Diagnostic is required
@@ -55,7 +57,7 @@
             <div class="form-group">
               <label for="status_id" class="col-lg-2 control-label">Start Available Date </label>
               <div class="col-lg-10">
-                <input type="date" class="form-control" #start_available_time="ngModel" [(ngModel)]="quizObj.start_available_time" id="start_available_time" required
+                <input type="date" class="form-control" (change)="changeDate(start_available_time.value,'start_date')" #start_available_time="ngModel" [(ngModel)]="quizObj.start_available_time" id="start_available_time" required
                 name="start_available_time">
 
                 <!-- <select class="form-control" #startAvailableDate="ngModel" ngModel id="startAvailableDate" required
@@ -74,7 +76,7 @@
             <div class="form-group">
               <label for="end_available_time" class="col-lg-2 control-label">End Available Date</label>
               <div class="col-lg-10">
-                <input type="date" class="form-control" #end_available_time="ngModel" [(ngModel)]="quizObj.end_available_time" [value]="quizObj.end_available_time" id="end_available_time" required
+                <input type="date" class="form-control" (change)="changeDate(end_available_time.value,'end_date')"  #end_available_time="ngModel" [(ngModel)]="quizObj.end_available_time" [value]="quizObj.end_available_time" id="end_available_time" required
                 name="end_available_time" placeholder="End Available Time">
 
                 <!-- <select class="form-control" #endAvailableTime="ngModel" ngModel id="endAvailableTime" required
@@ -107,7 +109,7 @@
             <div class="form-group">
               <label for="houses" class="col-lg-2 control-label">Houses</label>
               <div class="col-lg-10">
-                <mat-select multiple class="form-control" #houses="ngModel"  [(ngModel)]="quizObj.houses"  id="houses" name="houses">
+                <mat-select multiple class="form-control" #houses="ngModel"  [(ngModel)]="houses_ids"  id="houses" name="houses">
                   <mat-option *ngFor="let house of houses_array"  [value]="house.id">
                     {{house.house}}
                   </mat-option>
@@ -118,7 +120,7 @@
             <div class="form-group">
               <label for="skills" class="col-lg-2 control-label">Skills</label>
               <div class="col-lg-10">
-                <mat-select multiple class="form-control" #skills="ngModel"  [(ngModel)]="quizObj.skills"  id="skills" name="skills">
+                <mat-select multiple class="form-control" #skills="ngModel"  [(ngModel)]="skill_ids"  id="skills" name="skills">
                   <!-- <mat-option *ngFor="let skill of skills_array" [value]="skill.id">
                     {{skill.skill}}
                   </mat-option> -->

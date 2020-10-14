@@ -40,9 +40,11 @@
                   <!-- <option *ngFor="let quiz of quizzes; let i = index" [value]="quiz.diagnostic">
                     {{i}}
                   </option> -->
-                  <option *ngFor="let item of diagnostic_number(10);let i = index;" [value]="i+1">
+                  <!-- <option *ngFor="let item of diagnostic_number(10);let i = index;" [value]="i+1">
                     {{i+1}}
-                  </option>
+                  </option> -->
+                  <option value="1">True</option>
+                  <option value="0">False</option>
                 </select>
                 <div *ngIf="diagnostic.errors?.required && diagnostic.touched" class="alert alert-danger">
                   Diagnostic is required
@@ -55,7 +57,7 @@
             <div class="form-group">
               <label for="status_id" class="col-lg-2 control-label">Start Available Date </label>
               <div class="col-lg-10">
-                <input type="date" class="form-control" #start_available_time="ngModel" ngModel id="start_available_time" required
+                <input type="date" class="form-control" (change)="changeDate(start_available_time.value,'start_date')" #start_available_time="ngModel" ngModel id="start_available_time" required
                 name="start_available_time" >
 
                 <!-- <select class="form-control" #startAvailableDate="ngModel" ngModel id="startAvailableDate" required
@@ -74,7 +76,7 @@
             <div class="form-group">
               <label for="end_available_time" class="col-lg-2 control-label">End Available Date</label>
               <div class="col-lg-10">
-                <input type="date" class="form-control" #end_available_time="ngModel" ngModel id="end_available_time" required
+                <input type="date" class="form-control" (change)="changeDate(end_available_time.value,'end_date')"  #end_available_time="ngModel" ngModel id="end_available_time" required
                 name="end_available_time" placeholder="End Available Time">
 
                 <!-- <select class="form-control" #endAvailableTime="ngModel" ngModel id="endAvailableTime" required
