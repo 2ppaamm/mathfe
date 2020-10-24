@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+  Add House</h1>
+
+<mat-dialog-content>
+  <div *ngIf="loading" class="mat-table-spinner-wrapper" align="center">
+    <mat-spinner color="#960000"></mat-spinner>
+  </div>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    Server error, please try after some time.
+  </div>
+
+  <label for="house" class="col-lg-12 control-label">Please select house(s) from dropdown</label>
+  <mat-select class="form-control" name="house.id" id="house.id" #house_id="ngModel" [(ngModel)]="houses_ids" multiple>
+    <mat-option *ngFor="let house of Houses" [value]="house.id">{{house.house}}</mat-option>
+  </mat-select>
+   <div *ngIf="house_id.errors?.required && house_id.touched" class="alert alert-danger">
+    Track is required
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-save mat-raised-button color="primary" (click)="saveHouse()">Save</button>
+</mat-dialog-actions>

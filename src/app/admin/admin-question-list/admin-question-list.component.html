@@ -168,7 +168,7 @@
                 style="margin-top: 0.25rem; margin-bottom: 0.25rem;" src="{{beURL}}{{question.question_image}}" width="150" /> -->
               <dynamic-content *ngIf="((question.question.indexOf('<') >= 0) && (!displayKatex(question.question)) )"
                 [question]="question">
-                [q
+
               </dynamic-content>
               <svg *ngIf="question.calculator && !displayKatex(question.question)" style="width: 3rem"
                 aria-hidden="true" data-prefix="fas" data-icon="calculator" class="svg-inline--fa fa-calculator fa-w-14"
@@ -238,8 +238,8 @@
           <ng-container matColumnDef="skill">
             <th [hidden]="!ShowColumns.Skill" mat-header-cell *matHeaderCellDef mat-sort-header>Skill</th>
             <td [hidden]="!ShowColumns.Skill" mat-cell *matCellDef="let question">
-              <span [matTooltip]="question.skill.description">
-                {{question.skill.skill}}
+              <span [matTooltip]="question.skill?.description">
+                {{ (question.skill?.description && question.skill?.description.length > 0) ? question.skill?.description : ''}}
               </span>
             </td>
           </ng-container>
@@ -248,14 +248,14 @@
           <ng-container matColumnDef="track">
             <th [hidden]="!ShowColumns.Track" mat-header-cell *matHeaderCellDef mat-sort-header>Track</th>
             <td [hidden]="!ShowColumns.Track" mat-cell *matCellDef="let question">
-              {{ (question.skill.tracks && question.skill.tracks.length > 0) ? question.skill.tracks[0].track : ''}}
+              {{ (question.skill?.tracks && question.skill?.tracks.length > 0) ? question.skill?.tracks[0].track : ''}}
             </td>
           </ng-container>
           <ng-container matColumnDef="field">
             <th [hidden]="!ShowColumns.Field" mat-header-cell *matHeaderCellDef mat-sort-header>Field</th>
             <td [hidden]="!ShowColumns.Field" mat-cell *matCellDef="let question">
               {{
- (question.skill.tracks && question.skill.tracks.length > 0) ? question.skill.tracks[0].field.field :
+ (question.skill?.tracks && question.skill?.tracks.length > 0) ? question.skill?.tracks[0].field.field :
               ''
               }}
             </td>
@@ -264,7 +264,7 @@
             <th [hidden]="!ShowColumns.Level" mat-header-cell *matHeaderCellDef mat-sort-header>Level</th>
             <td [hidden]="!ShowColumns.Level" mat-cell *matCellDef="let question">
               {{
- (question.skill.tracks && question.skill.tracks.length > 0) ? question.skill.tracks[0].level.level :
+ (question.skill?.tracks && question.skill?.tracks.length > 0) ? question.skill?.tracks[0].level.level :
               ''
               }}
             </td>

@@ -93,7 +93,7 @@
               <tr id="quiz{{quiz.id}}" *ngFor="let quiz of quizzes">
                 <td [hidden]="!ShowColumns.quiz" align="left">{{quiz.quiz}} </td>
                 <td [hidden]="!ShowColumns.description" align="left">{{quiz.description}}</td>
-                <td [hidden]="!ShowColumns.diagnostic">{{quiz.diagnostic}}</td>
+                <td [hidden]="!ShowColumns.diagnostic">{{quiz.diagnostic == 1? 'True' : 'False'}}</td>
                 <td [hidden]="!ShowColumns.source">{{quiz.source}}</td>
                 <td [hidden]="!ShowColumns.start_available_time">{{quiz.start_available_time}}</td>
                 <td [hidden]="!ShowColumns.end_available_time">{{quiz.end_available_time}}</td>
@@ -111,13 +111,13 @@
                     <a (click)="copyQuiz(quiz.id)"  class="btn btn-success"><i class="fa fa-clone"></i></a>
                   </div>
                   <div class="action-box">
-                    <div><b>Manage Quiz</b></div>
+                    <div><b>Manage Class</b></div>
                     <div class="btn-group">
-                      <button type="button" class="btn btn-info btn-sm" (click)="keepManageSkills(quiz.id)" title="Keep Manage Skills">
-                        <i class="glyphicon glyphicon-eye-open"></i></button>
-                      <button type="button" class="btn btn-danger btn-sm" (click)="addManageHouses(quiz.id)" title="Add Manage Houses">
+                      <button type="button" class="btn btn-info btn-sm" (click)="openViewHouses(quiz.id)" title="View class"><i
+                          class="glyphicon glyphicon-eye-open"></i></button>
+                      <button type="button" class="btn btn-danger btn-sm" (click)="deleteAllSHoses(quiz.id)" title="Delete ALL class">
                         <i class="glyphicon glyphicon-remove"></i></button>
-                      <button type="button" class="btn btn-info btn-sm" (click)="addManageQuestions(quiz.id)" title="Add Manage Questions">
+                      <button type="button" class="btn btn-info btn-sm" (click)="getAddHouse(quiz.id)" title="Add class">
                         <i class="glyphicon glyphicon-education"></i></button>
                     </div>
                   </div>
