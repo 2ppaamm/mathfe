@@ -45,7 +45,7 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
     ID: true,
     Question: true,
     Answer: true,
-    Skill: true,
+    Skill: false,
     Track: true,
     Field: true,
     Level: true,
@@ -55,6 +55,7 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
     Author: true,
     Action: true
   }
+
   config = {
     search: true,
     searchPlaceholder: "Type Page No.",
@@ -75,15 +76,16 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
     }
 
 
+
+  }
+
+  ngOnInit() {
+
     this.questionService.getSearchOptions().subscribe(res => {
       this.searchOptions = res;
     }, error => {
       console.log("error", error);
     });
-
-  }
-
-  ngOnInit() {
 
   }
 
@@ -132,7 +134,7 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
 
   resetSearch() {
     this.selectedLevel = null;
-    this.selectedSkill = null;;
+    this.selectedSkill = null;
     const dom: any = document.getElementById('searchQuestion');
     dom.value = "";
     this.searchBy = "1";
@@ -187,11 +189,12 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
   }
   gotToPage() {
     if (this.dataModel) {
-      this.onPaginateChange(this.dataModel['id']);
+      this.onPaginateChange(this.dataModel.id);
     }
   }
 
   onPaginateChange(pageIndex) {
+    debugger;
     this.dataModel = pageIndex;
     this.loading = true;
     this.currentPage = pageIndex;
