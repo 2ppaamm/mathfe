@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';

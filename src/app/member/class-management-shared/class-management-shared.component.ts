@@ -3,7 +3,7 @@ import { DashboardService } from '../../services/dashboard.service';
 import { Course } from '../../models/course';
 import { House } from '../../models/house';
 import { Skill } from '../../models/skill';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 declare var $: any;

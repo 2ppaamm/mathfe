@@ -1,10 +1,11 @@
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import 'rxjs/add/operator/map';
+
 import 'rxjs/Rx';
-import { throwError } from 'rxjs';
-import { Observable } from 'rxjs/Observable';
+import { throwError ,  Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 @Injectable()
 export class UserService {
@@ -12,53 +13,53 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<any> {
-    return this.http.get(`${environment.apiURL}/users`)
-      .map((response) => response)
-      .catch((error: any) => throwError(error || { message: 'Server Error' }));
+    return this.http.get(`${environment.apiURL}/users`).pipe(
+      map((response) => response),
+      catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
   getUser(id: String): Observable<any> {
-    return this.http.get(`${environment.apiURL}/users/` + id)
-      .map((response) => response['user'])
-      .catch((error: any) => throwError(error || { message: 'Server Error' }));
+    return this.http.get(`${environment.apiURL}/users/` + id).pipe(
+      map((response) => response['user']),
+      catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
   updateUser(user: FormData, userId: Number): Observable<User[]> {
     const apiUrl = `${environment.apiURL}/users`
     const url = `${apiUrl}/${userId}`;
-    return this.http.post<any[]>(url, user)
-      .map((response) => response)
-      .catch((error: any) => throwError(error.error || { message: 'Server Error' }));
+    return this.http.post<any[]>(url, user).pipe(
+      map((response) => response),
+      catchError((error: any) => throwError(error.error || { message: 'Server Error' })),);
   }
   deleteUser(id: String): Observable<User[]> {
     const apiUrl = `${environment.apiURL}/users`
     const url = `${apiUrl}/${id}`;
-    return this.http.delete<User[]>(url)
-      .map((response) => response)
-      .catch((error: any) => throwError(error || { message: 'Server Error' }));
+    return this.http.delete<User[]>(url).pipe(
+      map((response) => response),
+      catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
   resetUser(userId: Number): Observable<any> {
-    return this.http.get(`${environment.apiURL}/users/` + userId + '/reset')
-      .map((response) => {
+    return this.http.get(`${environment.apiURL}/users/` + userId + '/reset').pipe(
+      map((response) => {
         return response;//['user'];
-      })
-      .catch((error: any) => throwError(error || { message: 'Server Error' }));
+      }),
+      catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
 
   // /users/{user}/diagnostic
 
   diagnostic(user, userId) {
-    return this.http.post(`${environment.apiURL}/users/` + userId + '/diagnostic', user)
-    .map((response) => {
+    return this.http.post(`${environment.apiURL}/users/` + userId + '/diagnostic', user).pipe(
+    map((response) => {
       return response;
-    })
-    .catch((error: any) => throwError(error || { message: 'Server Error' }));
+    }),
+    catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
 
 
   getUserReport(userId: Number): Observable<any> {
-    return this.http.get(`${environment.apiURL}/users/` + userId + '/report', { observe: 'response' })
-      .map((response) => {
+    return this.http.get(`${environment.apiURL}/users/` + userId + '/report', { observe: 'response' }).pipe(
+      map((response) => {
         return response.body;
-      })
-      .catch((error: any) => throwError(error || { message: 'Server Error' }));
+      }),
+      catchError((error: any) => throwError(error || { message: 'Server Error' })),);
   }
 }

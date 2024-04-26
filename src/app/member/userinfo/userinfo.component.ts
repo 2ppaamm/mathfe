@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'ag-userinfo',

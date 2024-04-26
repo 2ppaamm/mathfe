@@ -22,7 +22,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TrackService } from 'app/services/track.service';
 import { HelperService } from '../../services/helper.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { QuizService } from 'app/services/quiz.service';
 
 @Component({
