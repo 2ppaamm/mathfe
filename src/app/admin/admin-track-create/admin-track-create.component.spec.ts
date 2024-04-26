@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminTrackCreateComponent } from './admin-track-create.component';
 
@@ -6,7 +6,7 @@ describe('AdminTrackCreateComponent', () => {
   let component: AdminTrackCreateComponent;
   let fixture: ComponentFixture<AdminTrackCreateComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminTrackCreateComponent ]
     })

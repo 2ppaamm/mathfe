@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminEnrollmentUserDetailModalComponent } from './admin-enrollment-user-detail-modal.component';
 
@@ -6,7 +6,7 @@ describe('AdminEnrollmentUserDetailModalComponent', () => {
   let component: AdminEnrollmentUserDetailModalComponent;
   let fixture: ComponentFixture<AdminEnrollmentUserDetailModalComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminEnrollmentUserDetailModalComponent ]
     })

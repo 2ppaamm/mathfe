@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminRoleDeleteComponent } from './admin-role-delete.component';
 
@@ -6,7 +6,7 @@ describe('AdminRoleDeleteComponent', () => {
   let component: AdminRoleDeleteComponent;
   let fixture: ComponentFixture<AdminRoleDeleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminRoleDeleteComponent ]
     })

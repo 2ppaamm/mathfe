@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminPermissionCreateComponent } from './admin-permission-create.component';
 
@@ -6,7 +6,7 @@ describe('AdminPermissionCreateComponent', () => {
   let component: AdminPermissionCreateComponent;
   let fixture: ComponentFixture<AdminPermissionCreateComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminPermissionCreateComponent ]
     })

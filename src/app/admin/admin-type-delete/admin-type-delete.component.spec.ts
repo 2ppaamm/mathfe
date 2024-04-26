@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminTypeDeleteComponent } from './admin-type-delete.component';
 
@@ -6,7 +6,7 @@ describe('AdminTypeDeleteComponent', () => {
   let component: AdminTypeDeleteComponent;
   let fixture: ComponentFixture<AdminTypeDeleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminTypeDeleteComponent ]
     })

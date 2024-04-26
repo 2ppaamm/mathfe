@@ -31,4 +31,4 @@ const appRoutes: Routes = [
 
 ];
 
-export const routes:ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routes:ModuleWithProviders = RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' });

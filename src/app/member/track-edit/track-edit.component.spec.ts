@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TrackEditComponent } from './track-edit.component';
 
@@ -6,7 +6,7 @@ describe('TrackEditComponent', () => {
   let component: TrackEditComponent;
   let fixture: ComponentFixture<TrackEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TrackEditComponent ]
     })

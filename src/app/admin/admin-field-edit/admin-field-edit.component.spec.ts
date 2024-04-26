@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminFieldEditComponent } from './admin-field-edit.component';
 
@@ -6,7 +6,7 @@ describe('AdminFieldEditComponent', () => {
   let component: AdminFieldEditComponent;
   let fixture: ComponentFixture<AdminFieldEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminFieldEditComponent ]
     })

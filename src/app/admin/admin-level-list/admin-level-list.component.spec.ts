@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminLevelListComponent } from './admin-level-list.component';
 
@@ -6,7 +6,7 @@ describe('AdminLevelListComponent', () => {
   let component: AdminLevelListComponent;
   let fixture: ComponentFixture<AdminLevelListComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminLevelListComponent ]
     })

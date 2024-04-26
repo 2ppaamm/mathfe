@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ClassManagementSharedComponent } from './class-management-shared.component';
 
@@ -6,7 +6,7 @@ describe('ClassManagementSharedComponent', () => {
   let component: ClassManagementSharedComponent;
   let fixture: ComponentFixture<ClassManagementSharedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ClassManagementSharedComponent ]
     })

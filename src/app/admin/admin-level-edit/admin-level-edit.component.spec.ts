@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminLevelEditComponent } from './admin-level-edit.component';
 
@@ -6,7 +6,7 @@ describe('AdminLevelEditComponent', () => {
   let component: AdminLevelEditComponent;
   let fixture: ComponentFixture<AdminLevelEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminLevelEditComponent ]
     })

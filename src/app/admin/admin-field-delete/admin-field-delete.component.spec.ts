@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { AdminFieldDeleteComponent } from './admin-field-delete.component';
 
@@ -6,7 +6,7 @@ describe('AdminFieldDeleteComponent', () => {
   let component: AdminFieldDeleteComponent;
   let fixture: ComponentFixture<AdminFieldDeleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AdminFieldDeleteComponent ]
     })

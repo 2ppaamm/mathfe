@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TrackDeleteComponent } from './track-delete.component';
 
@@ -6,7 +6,7 @@ describe('TrackDeleteComponent', () => {
   let component: TrackDeleteComponent;
   let fixture: ComponentFixture<TrackDeleteComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TrackDeleteComponent ]
     })
