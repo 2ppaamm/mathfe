@@ -50,7 +50,6 @@
     "ngx-paypal": "^3.2.1",
     "ngx-select-dropdown": "^1.0.1",
     "rxjs": "^6.0.0",
-    "rxjs-compat": "^6.3.3",
     "save": "^2.3.2",
     "zone.js": "0.8.14"
   },
