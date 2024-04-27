@@ -303,7 +303,6 @@ export function tokenGetter() {
     ],
     imports: [
         routes,
-        RouterModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),

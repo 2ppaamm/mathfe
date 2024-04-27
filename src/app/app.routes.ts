@@ -17,7 +17,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo:'/', pathMatch: 'full'},
+  { path: '', redirectTo:'/home', pathMatch: 'full'},
   { path: '', component: DashboardComponent},
   { path:'home', component: LandingComponent},
   { path: 'login', component: LoginComponent},
