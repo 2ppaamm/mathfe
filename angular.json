@@ -165,7 +165,6 @@
       }
     }
   },
-  "defaultProject": "AllGifted",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ag",

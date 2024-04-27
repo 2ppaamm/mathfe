@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/question';
-import { FormControl, FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { FormControl, UntypedFormGroup, Validators, UntypedFormBuilder, AbstractControl } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { KatexOptions } from 'ng-katex';
 import katex from 'katex';
@@ -19,7 +19,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AdminQuestionFormComponent implements OnInit {
 
-  QuestionForm: FormGroup;
+  QuestionForm: UntypedFormGroup;
   questionTypeNumberRequirMsg = "Please select at least one answer.";
   questionTypeMCQRequirMsg = "";
   selectedFile: File = null;
@@ -202,7 +202,7 @@ export class AdminQuestionFormComponent implements OnInit {
     private questionService: QuestionService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private helperService: HelperService) {
 
     questionService.getQuestionOptions().subscribe((data) => {
