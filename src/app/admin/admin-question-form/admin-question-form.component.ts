@@ -6,7 +6,6 @@ import { QuestionService } from '../../services/question.service';
 import { Question } from '../../models/question';
 import { FormControl, UntypedFormGroup, Validators, UntypedFormBuilder, AbstractControl } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
-import { KatexOptions } from 'ng-katex';
 import katex from 'katex';
 import { HelperService } from '../../services/helper.service';
 import { retryWhen } from 'rxjs/operators';
@@ -45,12 +44,6 @@ export class AdminQuestionFormComponent implements OnInit {
   apiURL: string = environment.apiURL;
   loading = false;
   equation = "";
-  options: KatexOptions = {
-    displayMode: true,
-    macros: {
-      "\\f": "f(#1)"
-    }
-  };
   displayKatex = [false, false, false, false, false];
   disableAddNumTxtBx = false;
   numericTextBxCount = 0;

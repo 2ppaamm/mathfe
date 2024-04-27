@@ -2,11 +2,11 @@
   <canvas baseChart
               [data]="chartdata"
               [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
+              [type]="doughnutChartType"
               (chartHover)="chartHovered($event)"
               (chartClick)="chartClicked($event)"
               [options]="{legend: {display: false}}"
-              [colors]="chartColors">
+              [data]="chartColors">
 
   </canvas>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../models/course';
-import { CourseService } from '../services/course.service'; 
+import { CourseService } from '../services/course.service';
 declare var $ :any;
 
 @Component({
@@ -15,6 +15,7 @@ export class LandingComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
+    console.log('111111111111111112')
 	/* =================================
 	===  RESPONSIVE VIDEO           ====
 	=================================== */
@@ -25,8 +26,9 @@ export class LandingComponent implements OnInit {
 	===  OWL CROUSEL               ====
 	=================================== */
 	$(document).ready(function () {
-
-	    $("#feedbacks").owlCarousel({ 
+    console.log('11111111111111111')
+    console.log('jQuery is working:', typeof $ !== 'undefined');
+	    $("#feedbacks").owlCarousel({
 
 	        navigation: false, // Show next and prev buttons
 	        slideSpeed: 800,
@@ -52,15 +54,16 @@ export class LandingComponent implements OnInit {
 	===  Nivo Lightbox              ====
 	=================================== */
 	$(document).ready(function () {
+
 	    $('#screenshots a').nivoLightbox({
 	        effect: 'fadeScale',
 	    });
 	});
   }
 
-   selectCourse(course: Course) { 
+   selectCourse(course: Course) {
 	 this.selectedCourse = course;
-	 //scroll to the course details 
+	 //scroll to the course details
 	 let element: HTMLElement = document.getElementById("course-detail") as HTMLElement;
 	 element.scrollIntoView(true);
 	 window.scrollBy(0, -70);

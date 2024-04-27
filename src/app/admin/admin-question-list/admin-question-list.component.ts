@@ -7,7 +7,6 @@ import { MatPaginator} from '@angular/material/paginator';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSort} from '@angular/material/sort';
 import { MatTableDataSource} from '@angular/material/table';
-import { KatexOptions } from 'ng-katex';
 import katex from 'katex';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HelperService } from '../../services/helper.service';
@@ -33,12 +32,6 @@ export class AdminQuestionListComponent implements OnInit, OnChanges {
   currentPage = 1;
   selectedQuestion: any;
   loading = true;
-  options: KatexOptions = {
-    displayMode: true,
-    macros: {
-      "\\f": "f(#1)"
-    }
-  };
   searchOptions: any = { skills: [], levels: [] };
   selectedLevel: any;
   selectedSkill: any;

@@ -6,7 +6,6 @@ import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.compone
 import { SkillService } from 'app/services/skill.service';
 import { TrackService } from 'app/services/track.service';
 import { MatDialog } from '@angular/material/dialog';
-import { KatexOptions } from 'ng-katex';
 import { DomSanitizer } from '@angular/platform-browser';
 import katex from 'katex';
 declare var $: any;

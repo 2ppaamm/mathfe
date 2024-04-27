@@ -110,7 +110,7 @@ ag-root:empty+.preloader {
 }
 
 /*---------------------------------------
-   Typography                
+   Typography
 -----------------------------------------*/
 
 /* FONT FACE LOADER */
@@ -165,7 +165,7 @@ h5 {
 }
 
 /*---------------------------------------
-   CUSTOM BUTTON              
+   CUSTOM BUTTON
 -----------------------------------------*/
 
 .standard-button, .standard-button2 {
@@ -193,7 +193,7 @@ h5 {
 }
 
 /*---------------------------------------
-   TEXTS               
+   TEXTS
 -----------------------------------------*/
 
 .white-text {
@@ -209,7 +209,7 @@ h5 {
 }
 
 /*---------------------------------------
-   SECTIONS          
+   SECTIONS
 -----------------------------------------*/
 
 .section-header {
@@ -229,7 +229,7 @@ h5 {
 }
 
 /*---------------------------------------
-   LINES          
+   LINES
 -----------------------------------------*/
 
 .colored-line {
@@ -257,12 +257,12 @@ h5 {
 
 /*---------------------------------------
 =========================================
- **   SECTION STYLES                
+ **   SECTION STYLES
 =========================================
 -----------------------------------------*/
 
 /*---------------------------------------
-   SECTION:  HOME                 
+   SECTION:  HOME
 -----------------------------------------*/
 
 header {
@@ -365,7 +365,7 @@ header .intro-section .buttons {
 }
 
 /*---------------------------------------
-   SECTION:  FEATURES                 
+   SECTION:  FEATURES
 -----------------------------------------*/
 
 .features {
@@ -431,7 +431,7 @@ header .intro-section .buttons {
 }
 
 /*---------------------------------------
-   SECTION:  BRIEF                 
+   SECTION:  BRIEF
 -----------------------------------------*/
 
 .app-brief {
@@ -501,7 +501,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  TESTIMONIALS                 
+   SECTION:  TESTIMONIALS
 -----------------------------------------*/
 
 .testimonials {
@@ -573,7 +573,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  SERVICES           
+   SECTION:  SERVICES
 -----------------------------------------*/
 
 .services, .membercontent {
@@ -595,7 +595,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  SCREENSHOTS 
+   SECTION:  SCREENSHOTS
 -----------------------------------------*/
 
 .screenshots {
@@ -619,7 +619,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  PACKAGES | Added on version 1.7      
+   SECTION:  PACKAGES | Added on version 1.7
 -----------------------------------------*/
 
 .packages {
@@ -641,7 +641,7 @@ iframe, embed, object {
 }
 
 .single-package .color-bg {
-    background-color: !important;
+  /*   background-color: !important; */
 }
 
 .single-package .price h2 {
@@ -678,7 +678,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  DOWNLOAD                 
+   SECTION:  DOWNLOAD
 -----------------------------------------*/
 
 .download {
@@ -728,7 +728,7 @@ iframe, embed, object {
 }
 
 /*---------------------------------------
-   SECTION:  FOOTER                
+   SECTION:  FOOTER
 -----------------------------------------*/
 
 footer {

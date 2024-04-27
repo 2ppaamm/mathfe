@@ -6,7 +6,7 @@ import { Skill } from '../../models/skill';
 import { Observable ,  of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { ModalService } from '../../services/modal.service';
-import { PayPalConfig, PayPalIntegrationType } from 'ngx-paypal';
+import { ICreateOrderRequest, IPayPalConfig } from 'ngx-paypal';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 declare var $: any;
@@ -43,7 +43,7 @@ export class LandingPageComponent implements OnInit {
   enrolSuccessMessageStatus = false;
   placed_allocated: any;
   mastercode: any;
-  public payPalConfig?: PayPalConfig;
+  public payPalConfig?: IPayPalConfig;
 
   constructor(private dashboardService: DashboardService, private modalService: ModalService, public http: HttpClient) { }
 
@@ -62,7 +62,7 @@ export class LandingPageComponent implements OnInit {
     this.dashboardService.getUser().subscribe(
       data => {
         this.user = data;
-        // if (this.user["is_admin"] == 0) { 
+        // if (this.user["is_admin"] == 0) {
         // }
       },
       error => console.error(<any>error));
@@ -179,50 +179,24 @@ export class LandingPageComponent implements OnInit {
     this.saveToEnrolments(9999);
   }
 
-  public initConfig(): void {
-    this.payPalConfig = new PayPalConfig(
-      PayPalIntegrationType.ClientSideREST,
-      environment.payPal.payPalEnvironment,
-      {
-        commit: true,
-        client: {
-          production: environment.payPal.productionKey,
-          sandbox: environment.payPal.sandboxKey
-        },
-        button: {
-          label: 'paypal',
-          layout: 'vertical'
-        },
-        onAuthorize: (data, actions) => {
-          console.log('Authorize');
-          return of(undefined);
-        },
-        onPaymentComplete: (data, actions) => {
-          this.saveToEnrolments(data.paymentID);
-        },
-        onCancel: (data, actions) => {
-          console.log('OnCancel');
-        },
-        onError: err => {
-          console.log('OnError');
-        },
-        onClick: () => {
-
-        },
-        // validate: (actions) => { 
-        // },
-        experience: {
-          noShipping: true,
-          brandName: 'PayPal'
-        },
-        transactions: [
-          {
-            amount: {
-              total: this.price_value,
-              currency: this.currency_value,
-            },
-            // custom: 'Custom value',
-            item_list: {
+  private initConfig(): void {
+    this.payPalConfig = {
+    currency: 'USD',
+    clientId:  environment.payPal.productionKey,
+    createOrderOnClient: (data) => <ICreateOrderRequest>{
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            currency_code: 'USD',
+            value: this.price_value,
+            breakdown: {
+              item_total: {
+                currency_code: 'USD',
+                value: this.price_value,
+              }
+            }
+          },
               //   items: [
               //     {
               //       name: 'hat',
@@ -242,22 +216,35 @@ export class LandingPageComponent implements OnInit {
               //       sku: 'product34',
               //       currency: 'USD'
               //     }],
-              shipping_address: {
-                recipient_name: 'Brian Robinson',
-                line1: '4th Floor',
-                line2: 'Unit #34',
-                city: 'San Jose',
-                country_code: 'US',
-                postal_code: '95131',
-                phone: '011862212345678',
-                state: 'CA'
-              },
-            },
-          }
-        ],
-        note_to_payer: 'Contact us if you have troubles processing payment'
-      }
-    );
+        }
+      ]
+    },
+    advanced: {
+      commit: 'true'
+    },
+    style: {
+      label: 'paypal',
+      layout: 'vertical'
+    },
+    onApprove: (data, actions) => {
+      console.log('onApprove - transaction was approved, but not authorized', data, actions);
+      actions.order.get().then(details => {
+        console.log('onApprove - you can get full order details inside onApprove: ', details);
+      });
+    },
+    onClientAuthorization: (data) => {
+      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+    },
+    onCancel: (data, actions) => {
+      console.log('OnCancel', data, actions);
+    },
+    onError: err => {
+      console.log('OnError', err);
+    },
+    onClick: (data, actions) => {
+      console.log('onClick', data, actions);
+    },
+  };
   }
 
   saveToEnrolments(transaction_id) {

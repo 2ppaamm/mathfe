@@ -50,7 +50,7 @@ import { TeachListComponent } from './member/teach-list/teach-list.component';
 import { TeachComponent } from './member/teach-list/teach.component';
 import { TeachDetailComponent } from './member/teach-list/teach-detail/teach-detail.component';
 import { TrackPassedComponent } from './member/teach-list/track-passed/track-passed.component';
-import { ChartsModule } from 'ng2-charts';
+import { BaseChartDirective } from 'ng2-charts';
 import { ChartComponent } from './member/teach-list/teach-detail/chart/chart.component';
 import { BarchartComponent } from './member/teach-list/teach-detail/barchart/barchart.component';
 import { StudentradarComponent } from './member/house-detail/studentradar/studentradar.component';
@@ -161,7 +161,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 
-import { NgxPayPalModule } from 'ngx-paypal';
 import { PermissionService } from './services/permission.service';
 import { EnrolmentService } from './services/enrolment.service';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
@@ -172,10 +171,8 @@ import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.
 import { MaterialModule } from './material/material.module'
 import { routes } from './app.routes';
 
-import { DataTableModule } from 'angular-6-datatable';
-import { KatexModule } from 'ng-katex';
-import { NgMasonryGridModule } from 'ng-masonry-grid';
 import { RouterModule, RouterOutlet } from '@angular/router';
+import { NgxPayPalModule } from 'ngx-paypal';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -309,13 +306,13 @@ export function tokenGetter() {
         FormsModule,
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         HttpClientModule,
-        ChartsModule,
+        BaseChartDirective,
         NgxPayPalModule,
         SelectDropDownModule,
         JwtModule.forRoot({
             config: {
                 tokenGetter: tokenGetter,
-                whitelistedDomains: [
+                allowedDomains: [
                     'localhost:4200',
                     'localhost',
                     'devapi.pamelalim.me',
@@ -333,10 +330,6 @@ export function tokenGetter() {
         AngularMaterialModule,
         BrowserAnimationsModule,
         AngularEditorModule,
-        NgMasonryGridModule,
-        DataTableModule,
-        KatexModule,
-
     ],
     providers: [TrackService, CourseService, QuestionService, DashboardService,
         HouseService, FieldService, TypeService, UnitService, PermissionService, LevelService,
