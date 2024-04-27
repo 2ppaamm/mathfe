@@ -1,0 +1,24 @@
+ngx-masonry{
+margin: auto;
+}
+.masonry-item{
+  width: 250px;
+}
+@media (max-width: 768px) {
+  .masonry-item {
+    width: 45%;
+  }
+}
+
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .masonry-item {
+    width: 200px;
+  }
+}
+
+@media (min-width: 993px) {
+  .masonry-item {
+    width: 250px;
+  }
+}

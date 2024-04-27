@@ -5,6 +5,11 @@
 	<div class="row">
 		<!-- Masonry grid Container -->
 
+    <ngx-masonry [options]="masonryOptions">
+      <div ngxMasonryItem  class="masonry-item" id="{{'masonry-item-'+i}}"  *ngFor="let course of courses | async; let i = index;" (click)="onSelect(course)">
+				<ag-course   [course]="course" (click)="onSelect(course)"></ag-course>
+			</div>
+    </ngx-masonry>
 	</div>
 </div>
 <!-- if got time, do this carousel thingy
