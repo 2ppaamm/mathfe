@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from "../../../confirm-dialog/confirm-dialog.component"
 import { Router } from '@angular/router';
-import { debug } from 'util';
 import { environment } from 'environments/environment';
 import { Track } from '../../../../models/track';
 import { Skill } from '../../../../models/skill';

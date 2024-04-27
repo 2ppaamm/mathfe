@@ -1,12 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import { environment } from '../../../environments/environment';
 import { EnrolmentService } from '../../services/enrolment.service';
 import { Enrolment } from '../../models/enrolment';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AdminEnrollmentUserDetailModalComponent } from './modal/admin-enrollment-user-detail-modal/admin-enrollment-user-detail-modal.component'
 import { AdminEnrollmentHouseDetailModalComponent } from './modal/admin-enrollment-house-detail-modal/admin-enrollment-house-detail-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 @Component({
   selector: 'ag-admin-enrolment-list',
   templateUrl: './admin-enrolment-list.component.html',

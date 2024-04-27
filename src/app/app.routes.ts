@@ -30,5 +30,4 @@ const appRoutes: Routes = [
   { path: '**', component: PageNotFoundComponent },
 
 ];
-
-export const routes:ModuleWithProviders = RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' });
+export const routes: ModuleWithProviders<any> = RouterModule.forRoot(appRoutes, { relativeLinkResolution: 'legacy' });

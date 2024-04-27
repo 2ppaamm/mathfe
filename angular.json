@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "All Gifted": {
+    "AllGifted": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -88,18 +91,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "All Gifted:build"
+            "browserTarget": "AllGifted:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "All Gifted:build:production"
+              "browserTarget": "AllGifted:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "All Gifted:build"
+            "browserTarget": "AllGifted:build"
           }
         },
         "test": {
@@ -147,7 +150,7 @@
         }
       }
     },
-    "All Gifted-e2e": {
+    "AllGifted-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -156,13 +159,13 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "All Gifted:serve"
+            "devServerTarget": "AllGifted:serve"
           }
         }
       }
     }
   },
-  "defaultProject": "All Gifted",
+  "defaultProject": "AllGifted",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "ag",

@@ -4,6 +4,8 @@ import { Course } from '../models/course';
 import { House } from '../models/house';
 import { Skill } from '../models/skill';
 import { Observable } from 'rxjs';
+import { RouterModule } from "@angular/router";
+
 declare var $: any;
 @Component({
   selector: 'ag-member',

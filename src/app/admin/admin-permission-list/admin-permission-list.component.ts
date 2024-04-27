@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';;
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { PermissionService } from '../../services/permission.service';
 import { Permission } from '../../models/permission';
@@ -39,7 +39,7 @@ export class AdminPermissionListComponent implements OnInit {
 
   ngOnInit() {
     this.permissionService.getPermissions()
-      .subscribe(items => {        
+      .subscribe(items => {
         this.permissions = items.sort(this._sortById);
         this._updateloading(false);
       });

@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from "../../../confirm-dialog/confirm-dialog.component"
 import { DomSanitizer } from '@angular/platform-browser';
 import { environment } from 'environments/environment';
@@ -41,7 +42,7 @@ export class AdminHouseSkillsTrackListComponent implements OnInit {
         //    id: -1,
         //    link: "/videos/skills/logo.mp4"
         //  });
-        //} 
+        //}
         v.videos = [];
         videos.forEach((url, ii) => {
           v.videos.push({

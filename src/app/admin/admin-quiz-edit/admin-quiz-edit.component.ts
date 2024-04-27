@@ -1,4 +1,3 @@
-import { debug } from 'util';
 import { SkillService } from './../../services/skill.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +6,6 @@ import { TrackService } from '../../services/track.service';
 import { Track } from '../../models/track';
 import { HelperService } from '../../services/helper.service';
 import { QuizService } from 'app/services/quiz.service';
-import { quiz } from 'app/models/quiz';
 import { HouseService } from 'app/services/house.service';
 import { getLocaleDateFormat } from '@angular/common';
 

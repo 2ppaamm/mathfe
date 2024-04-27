@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router'; 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { FieldService } from '../../services/field.service';
 import { Field } from '../../models/field';
@@ -44,7 +44,7 @@ export class AdminFieldListComponent  implements OnInit {
 
   ngOnInit() {
     this.fieldService.getFields()
-      .subscribe(items => { 
+      .subscribe(items => {
         this.fields = items.sort(this._sortById);
         this._updateloading(false);
       });
@@ -70,7 +70,7 @@ export class AdminFieldListComponent  implements OnInit {
     this._router.navigate(['/admin/fields/edit', id]);
     setTimeout(() => window.scrollTo(0, 0), 0);
   }
-  
+
   // open dialog block
 
   public openDialog(id: number): void {
@@ -121,7 +121,7 @@ export class AdminFieldListComponent  implements OnInit {
   private _sortById(a: Field, b: Field): number {
     if (a.id < b.id) {
       return -1;
-    } 
+    }
     else if (a.id > b.id) {
       return 1;
     }
@@ -133,7 +133,7 @@ export class AdminFieldListComponent  implements OnInit {
   private _sortByTitle(a: Field, b: Field): number {
     if (a.field.toLowerCase() < b.field.toLowerCase()) {
       return -1;
-    } 
+    }
     else if (a.field.toLowerCase() > b.field.toLowerCase()) {
       return 1;
     }
@@ -145,14 +145,14 @@ export class AdminFieldListComponent  implements OnInit {
   private _sortByDescription(a: Field, b: Field): number {
     if (a.description.toLowerCase() < b.description.toLowerCase()) {
       return -1;
-    } 
+    }
     else if (a.description.toLowerCase() > b.description.toLowerCase()) {
       return 1;
     }
     else {
       return 0;
     }
-  } 
+  }
   private _resetSort(): void {
     this.sortedByTitle = false;
     this.sortedByDescription = false;

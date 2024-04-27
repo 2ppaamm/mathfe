@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { TypeService } from '../../services/type.service';
 import { Type } from '../../models/type';
@@ -40,7 +41,7 @@ export class AdminTypeListComponent implements OnInit {
 
   ngOnInit() {
     this.typeService.getTypes()
-      .subscribe(items => { 
+      .subscribe(items => {
         this.types = items.sort(this._sortById);
         this._updateloading(false);
       });

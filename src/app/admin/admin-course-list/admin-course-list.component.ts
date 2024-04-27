@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';;
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { CourseService } from '../../services/course.service';
 import { Course } from '../../models/course';

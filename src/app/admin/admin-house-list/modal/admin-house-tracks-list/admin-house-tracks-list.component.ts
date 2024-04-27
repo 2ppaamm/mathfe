@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HouseTrackService } from '../../../../services/house-track.service';
 import { Track } from '../../../../models/track';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from "../../../confirm-dialog/confirm-dialog.component"
 import { Router } from '@angular/router';
-import { debug } from 'util';
 import { HouseService } from '../../../../services/house.service';
 
 @Component({

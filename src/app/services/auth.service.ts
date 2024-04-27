@@ -1,12 +1,12 @@
 
-import {timer as observableTimer,  Observable, of, Subject } from 'rxjs';
+import {Observable, of, Subject, timer } from 'rxjs';
 
 import {mergeMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import * as auth0 from 'auth0-js';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from "../../environments/environment"
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -32,17 +32,15 @@ export class AuthService {
 
     const expiresAt = JSON.parse(window.localStorage.getItem('expires_at'));
 
-    const source = observableOf(expiresAt).pipe(mergeMap(
-      expiresAt => {
-
+    const source = new Observable<number>(subscriber => {
+      subscriber.next(expiresAt);
+    }).pipe(
+      mergeMap(expiresAt => {
         const now = Date.now();
-
-        // Use the delay in a timer to
-        // run the refresh at the proper time
-        console.log('will refresh token in ' + Math.max(1, expiresAt - now) / 1000 + ' seconds')
-        return observableTimer(Math.max(1, expiresAt - now));
-      }));
-
+        console.log('will refresh token in ' + Math.max(1, expiresAt - now) / 1000 + ' seconds');
+        return timer(Math.max(1, expiresAt - now));
+      })
+    );
     // Once the delay time from above is
     // reached, get a new JWT and schedule
     // additional refreshes

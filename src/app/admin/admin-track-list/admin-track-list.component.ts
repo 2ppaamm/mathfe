@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { House } from '../../models/house';
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component";
 import { NotifyDialogComponent } from "../notify-dialog/notify-dialog.component";
@@ -10,6 +9,7 @@ import { AdminHouseSkillsTrackListComponent } from './modal/admin-house-skills-t
 import { AdminAddSkillComponent } from './modal/admin-add-skill/admin-add-skill.component';
 import { SkillTrackService } from '../../services/skill-track.service';
 import { HelperService } from '../../services/helper.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'ag-admin-track-list',
   templateUrl: './admin-track-list.component.html',

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { environment } from '../../../environments/environment';
 import { HouseService } from '../../services/house.service';
 import { House } from '../../models/house';
@@ -14,6 +13,7 @@ import { Track } from '../../models/track';
 import { AdminAddTrackListComponent } from './modal/admin-add-track-list/admin-add-track-list.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { NotifyDialogComponent } from "../notify-dialog/notify-dialog.component";
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'ag-admin-house-list',
   templateUrl: './admin-house-list.component.html',

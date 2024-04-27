@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -26,7 +25,6 @@ import { HelperService } from './services/helper.service';
 import { CourseDetailComponent } from './dashboard/course-detail/course-detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { AboutComponent } from './about/about.component';
-import { routes } from './app.routes';
 import { AdminComponent } from './admin/admin.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard.component';
 import { AdminCourseListComponent } from './admin/admin-course-list/admin-course-list.component';
@@ -59,7 +57,6 @@ import { StudentradarComponent } from './member/house-detail/studentradar/studen
 import { UserinfoComponent } from './member/userinfo/userinfo.component';
 import { VideoComponent } from './member/video/video.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { RouterModule } from '@angular/router';
 import { QuizComponent } from './member/quiz/quiz.component';
 import { MemberDashboardComponent } from './member/member-dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -163,18 +160,22 @@ import { AngularMaterialModule } from './angularmaterial.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { NgMasonryGridModule } from 'ng-masonry-grid';
-import { NgxPayPalModule } from 'ngx-paypal';
-import { DataTableModule } from "angular-6-datatable";
 
-import { KatexModule } from 'ng-katex';
+import { NgxPayPalModule } from 'ngx-paypal';
 import { PermissionService } from './services/permission.service';
 import { EnrolmentService } from './services/enrolment.service';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { AdminQuizAddComponent } from './admin/admin-quiz-add/admin-quiz-add.component';
 import { AdminQuizListComponent } from './admin/admin-quiz-list/admin-quiz-list.component';
 import { AdminQuizDeleteComponent } from './admin/admin-quiz-delete/admin-quiz-delete.component';
-import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.component'
+import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.component';
+import { MaterialModule } from './material/material.module'
+import { routes } from './app.routes';
+
+import { DataTableModule } from 'angular-6-datatable';
+import { KatexModule } from 'ng-katex';
+import { NgMasonryGridModule } from 'ng-masonry-grid';
+import { RouterModule, RouterOutlet } from '@angular/router';
 export function tokenGetter() {
   return localStorage.getItem("token");
 }
@@ -303,11 +304,11 @@ export function tokenGetter() {
     ],
     imports: [
         routes,
+        RouterModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
         HttpClientModule,
-        HttpModule,
         ChartsModule,
         NgxPayPalModule,
         SelectDropDownModule,
@@ -334,7 +335,8 @@ export function tokenGetter() {
         AngularEditorModule,
         NgMasonryGridModule,
         DataTableModule,
-        KatexModule
+        KatexModule,
+
     ],
     providers: [TrackService, CourseService, QuestionService, DashboardService,
         HouseService, FieldService, TypeService, UnitService, PermissionService, LevelService,

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd, RouterModule  } from '@angular/router';
 import { Location, PopStateEvent } from "@angular/common";
 
 @Component({
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       this.lastPoppedUrl = ev.url;
     });
     this.router.events.subscribe((ev: any) => {
-      if (ev instanceof NavigationStart) { 
+      if (ev instanceof NavigationStart) {
         if (ev.url != this.lastPoppedUrl)
           this.yScrollStack.push(window.scrollY);
       } else if (ev instanceof NavigationEnd) {

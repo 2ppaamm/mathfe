@@ -4,7 +4,7 @@ import { environment } from 'environments/environment';
 import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog.component"
 import { DifficultyService } from 'app/services/difficulty.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ag-admin-difficulty-list',
@@ -43,10 +43,10 @@ export class AdminDifficultyListComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this._updateloading(true);
     this.difficultyService.getDifficulties()
-      .subscribe(items => { 
+      .subscribe(items => {
         this.difficulties = items.sort(this._sortById);
         this._updateloading(false);
       });
@@ -62,7 +62,7 @@ export class AdminDifficultyListComponent implements OnInit {
   get updateStatus(): string {
     return this.difficultyService.updateStatus;
   }
- 
+
   public editDifficulty(id: number): void {
     this._router.navigate(['/admin/difficulties/edit', id]);
     setTimeout(() => window.scrollTo(0, 0), 0);

@@ -4,7 +4,7 @@ import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AdminUserReportComponent } from '../admin-user-report/admin-user-report.component'
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { HelperService } from '../../services/helper.service';
 @Component({
   selector: 'ng-admin-user-list',

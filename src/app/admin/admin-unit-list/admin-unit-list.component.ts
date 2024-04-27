@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';;
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { environment } from '../../../environments/environment';
 import { UnitService } from '../../services/unit.service';
 import { Unit } from '../../models/unit';
@@ -39,7 +39,7 @@ export class AdminUnitListComponent implements OnInit {
 
   ngOnInit() {
     this.unitService.getUnits()
-      .subscribe(items => {        
+      .subscribe(items => {
         this.units = items.sort(this._sortById);
         this._updateloading(false);
       });
