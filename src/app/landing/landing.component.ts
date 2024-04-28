@@ -15,7 +15,6 @@ export class LandingComponent implements OnInit {
   constructor(private courseService: CourseService) { }
 
   ngOnInit() {
-    console.log('111111111111111112')
 	/* =================================
 	===  RESPONSIVE VIDEO           ====
 	=================================== */
@@ -26,7 +25,6 @@ export class LandingComponent implements OnInit {
 	===  OWL CROUSEL               ====
 	=================================== */
 	$(document).ready(function () {
-    console.log('11111111111111111')
     console.log('jQuery is working:', typeof $ !== 'undefined');
 	    $("#feedbacks").owlCarousel({
 
