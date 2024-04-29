@@ -50,7 +50,7 @@ import { TeachListComponent } from './member/teach-list/teach-list.component';
 import { TeachComponent } from './member/teach-list/teach.component';
 import { TeachDetailComponent } from './member/teach-list/teach-detail/teach-detail.component';
 import { TrackPassedComponent } from './member/teach-list/track-passed/track-passed.component';
-import { BaseChartDirective } from 'ng2-charts';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ChartComponent } from './member/teach-list/teach-detail/chart/chart.component';
 import { BarchartComponent } from './member/teach-list/teach-detail/barchart/barchart.component';
 import { StudentradarComponent } from './member/house-detail/studentradar/studentradar.component';
@@ -337,7 +337,8 @@ export function tokenGetter() {
         HouseService, FieldService, TypeService, UnitService, PermissionService, LevelService,
         DifficultyService, RoleService,
         UserService, AuthService, AuthGuardService, HouseTrackService,
-        SkillService, SkillTrackService, ModalService, HelperService, EnrolmentService],
+        SkillService, SkillTrackService, ModalService, HelperService, EnrolmentService,
+        provideCharts(withDefaultRegisterables())],
     bootstrap: [AppComponent]
 })
 
