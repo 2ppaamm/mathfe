@@ -80,7 +80,6 @@ export class AuthService {
         if (!isEnrol) {
           localStorage.removeItem('house');
         }
-        window.location.hash = '/member';
         this.setSession(authResult);
         this.router.navigate(['/member']);
       } else if (err) {
@@ -109,7 +108,7 @@ export class AuthService {
     this.unscheduleRenewal();
     this.asyncProfileImageWorker.next(false);
     // Go back to the home route
-    this.router.navigate(['/']);
+        this.router.navigate(['/home']);
   }
 
   public isAuthenticated(): boolean {
