@@ -815,3 +815,8 @@ footer .copyright {
 .alert.alert-dismissible .close {
     right: 0;
 }
+
+mfpaginator{
+  display: flex;
+  justify-content: space-between;
+}

@@ -174,6 +174,7 @@ import { routes } from './app.routes';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { NgxMasonryModule } from 'ngx-masonry';
+import {DataTableModule} from "@pascalhonegger/ng-datatable";
 
 export function tokenGetter() {
   return localStorage.getItem("token");
@@ -311,6 +312,7 @@ export function tokenGetter() {
         NgxPayPalModule,
         SelectDropDownModule,
         NgxMasonryModule,
+        DataTableModule,
         JwtModule.forRoot({
             config: {
                 tokenGetter: tokenGetter,
