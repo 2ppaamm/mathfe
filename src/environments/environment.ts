@@ -5,8 +5,8 @@
 import { PayPalEnvironment } from 'ngx-paypal';
 export const environment = {
   production: false,
-  apiURL: 'https://mathapi.pamelalim.me',
-//  apiURL: 'localhost:8000',
+  apiURL: 'https://mathapi.allgifted.com',
+//  apiURL: 'http://localhost:8000',
 
   //apiURL: 'http://devapi.allgifted.com',
 
@@ -16,7 +16,7 @@ export const environment = {
      audience: 'https://mathapi.allgifted.com',
      redirectUri: 'http://localhost:4200/home',
      theme: {
-       logo: "http://school.all-gifted.com/pluginfile.php/1/theme_lambda/logo/1472088488/newlogo.png"
+       logo: "https://www.allgifted.com/wp-content/uploads/2020/06/ags@2x-trans.png"
      }
    },
   

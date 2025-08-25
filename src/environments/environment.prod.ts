@@ -1,10 +1,10 @@
 import { PayPalEnvironment } from 'ngx-paypal';
 export const environment = {
   production: true,
-//  apiURL: 'https://mathapi.pamelalim.me',
-  apiURL: 'localhost:8000',
+  apiURL: 'https://mathapi.pamelalim.me',
+//  apiURL: 'localhost:8000',
   webAuth: {
-    clientID: 'eVJv6UFM9GVdukBWiURczRCxmb6iaUYG',
+    clientID: 'x0AAlKqaQ8Zw6YF4kdMzTE08oAXjIhGJ',
     domain: 'pamelalim.auth0.com',
     audience: 'https://pamelalim.auth0.com/userinfo',
     redirectUri: 'https://math.allgifted.com/home',
