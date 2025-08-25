@@ -88,7 +88,7 @@
                 <select class="form-control" id="status_id" name="status_id"
                 placeholder="Status" [(ngModel)]="course.status_id" #status="ngModel"
                 required>
-                   <option *ngFor="let status of statuses" [value]="status.id">
+                   <option *ngFor="let status of status" [value]="status.id">
                     {{status.status}}
                   </option>
                 </select>
