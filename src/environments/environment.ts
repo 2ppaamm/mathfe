@@ -14,7 +14,7 @@ export const environment = {
     clientID: 'x0AAlKqaQ8Zw6YF4kdMzTE08oAXjIhGJ',
      domain: 'pamelalim.auth0.com',
      audience: 'https://mathapi.allgifted.com',
-     redirectUri: 'http://localhost:4200/home',
+     redirectUri: 'https://math.allgifted.com/home',
      theme: {
        logo: "https://www.allgifted.com/wp-content/uploads/2020/06/ags@2x-trans.png"
      }
