@@ -5,8 +5,8 @@
 import { PayPalEnvironment } from 'ngx-paypal';
 export const environment = {
   production: false,
-  apiURL: 'https://mathapi.allgifted.com',
-//  apiURL: 'http://localhost:8000',
+//  apiURL: 'https://mathapi.allgifted.com',
+  apiURL: 'http://localhost:8000',
 
   //apiURL: 'http://devapi.allgifted.com',
 
