@@ -1,7 +1,7 @@
 import { PayPalEnvironment } from 'ngx-paypal';
 export const environment = {
   production: true,
-  apiURL: 'https://mathapi.allgifted.com',
+  apiURL: 'https://mathapi.allgifted.com/api',
 //  apiURL: 'localhost:8000',
   webAuth: {
     clientID: 'x0AAlKqaQ8Zw6YF4kdMzTE08oAXjIhGJ',

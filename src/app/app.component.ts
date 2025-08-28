@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './services/auth.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { Location, PopStateEvent } from "@angular/common";
+import { OtpAuthService } from './services/otp-auth.service';
 
 @Component({
   selector: 'ag-root',
@@ -12,17 +12,19 @@ export class AppComponent implements OnInit {
   title = 'ag';
   private lastPoppedUrl: string;
   private yScrollStack: number[] = [];
-  constructor(public authService: AuthService, private router: Router, private location: Location) {
-    authService.handleAuthentication();
-    authService.scheduleRenewal();
+  
+  constructor(
+    public otpAuthService: OtpAuthService, 
+    private router: Router, 
+    private location: Location
+  ) {
+    // Remove Auth0 specific methods - not needed for OTP
   }
 
   public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    return this.otpAuthService.isAuthenticated();
   }
+  
   ngOnInit() {
     this.location.subscribe((ev: PopStateEvent) => {
       this.lastPoppedUrl = ev.url;

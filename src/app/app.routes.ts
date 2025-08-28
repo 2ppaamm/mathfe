@@ -10,7 +10,6 @@ import {memberRoutes} from './member/member.routes';
 import {AuthGuardService} from './services/auth-guard.service';
 import {MemberComponent} from './member/member.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { LoginComponent } from './login/login.component';
 import { VideoComponent } from './member/video/video.component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 import { PrivacyComponent } from './privacy/privacy.component';
@@ -20,7 +19,6 @@ const appRoutes: Routes = [
   { path: '', redirectTo:'/', pathMatch: 'full'},
   { path: '', component: DashboardComponent},
   { path:'home', component: LandingComponent},
-  { path: 'login', component: LoginComponent},
   { path: 'leader', component: LeaderboardComponent},
   { path: 'about', component: AboutComponent},
   { path: 'admin', component: AdminComponent, children: adminRoutes, canActivate: [AuthGuardService]},

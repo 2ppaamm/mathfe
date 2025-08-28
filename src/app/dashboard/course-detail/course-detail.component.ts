@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Course } from '../../models/course';
 import { environment } from '../../../environments/environment';
-import { AuthService } from '../../services/auth.service';
+import { OtpAuthService } from '../../services/otp-auth.service';
 
 @Component({
   selector: 'ag-course-detail',
@@ -12,7 +12,8 @@ import { AuthService } from '../../services/auth.service';
 export class CourseDetailComponent implements OnInit, OnChanges {
   beURL = environment.apiURL + '/';
   @Input() selectedCourse: Course;
-  constructor(private authService: AuthService, private router: Router) { }
+  
+  constructor(private otpAuthService: OtpAuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,8 +23,9 @@ export class CourseDetailComponent implements OnInit, OnChanges {
   }
 
   public login(obj) {
-    this.authService.login(true);
+    // Redirect to landing page or show login modal since OTP doesn't have a direct login method
     localStorage.setItem('house', JSON.stringify(obj));
+    this.router.navigate(['/']);
   }
 
   public directEnrol(obj) {
@@ -31,9 +33,6 @@ export class CourseDetailComponent implements OnInit, OnChanges {
   }
 
   public isAuthenticated(): boolean {
-    // Check whether the current time is past the
-    // access token's expiry time
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-    return new Date().getTime() < expiresAt;
+    return this.otpAuthService.isAuthenticated();
   }
 }

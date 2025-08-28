@@ -1,0 +1,97 @@
+<div class="otp-login-container">
+  <div class="otp-login-card">
+    <div class="login-header">
+      <h3>Login to All Gifted School</h3>
+    </div>
+
+    <!-- Contact Input Step -->
+    <div *ngIf="step === 'contact'" class="login-step">
+      <div class="form-group">
+        <label for="contact">Email address or Phone</label>
+        <input 
+          type="text" 
+          id="contact"
+          [(ngModel)]="contact" 
+          placeholder="Enter your email or phone number"
+          class="form-control"
+          [disabled]="loading"
+          (keyup.enter)="sendOtp()">
+        <small class="form-text text-muted">
+          We'll send you a verification code
+        </small>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <div class="alert alert-success" *ngIf="success">
+        {{ success }}
+      </div>
+
+      <button 
+        type="button" 
+        class="btn btn-primary btn-block"
+        (click)="sendOtp()"
+        [disabled]="loading || !contact">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+        {{ loading ? 'Sending...' : 'Send OTP' }}
+      </button>
+    </div>
+
+    <!-- OTP Verification Step -->
+    <div *ngIf="step === 'otp'" class="login-step">
+      <div class="form-group">
+        <label for="otp">Verification Code</label>
+        <input 
+          type="text" 
+          id="otp"
+          [(ngModel)]="otp_code" 
+          placeholder="Enter 6-digit code"
+          class="form-control text-center"
+          maxlength="6"
+          [disabled]="loading"
+          (keyup.enter)="verifyOtp()"
+          style="font-size: 1.5rem; letter-spacing: 0.5rem;">
+        <small class="form-text text-muted">
+          Code sent to {{ contact }}
+        </small>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="error">
+        {{ error }}
+      </div>
+
+      <div class="alert alert-success" *ngIf="success">
+        {{ success }}
+      </div>
+
+      <button 
+        type="button" 
+        class="btn btn-primary btn-block mb-2"
+        (click)="verifyOtp()"
+        [disabled]="loading || otp_code.length !== 6">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+        {{ loading ? 'Verifying...' : 'Verify & Login' }}
+      </button>
+
+      <div class="text-center">
+        <button 
+          type="button" 
+          class="btn btn-link btn-sm"
+          (click)="resendOtp()"
+          [disabled]="loading">
+          Resend Code
+        </button>
+        <span class="mx-2">|</span>
+        <button 
+          type="button" 
+          class="btn btn-link btn-sm"
+          (click)="goBack()"
+          [disabled]="loading">
+          Change Contact
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-import { AuthService } from '../../services/auth.service';
+import { OtpAuthService } from '../../services/otp-auth.service';
+
 @Component({
   selector: 'ag-user-profile',
   templateUrl: './user-profile.component.html',
@@ -15,8 +16,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   params: any;
   @Output() editingmode = new EventEmitter<boolean>();
 
-  constructor(private userService: UserService, private authService: AuthService) { }
+  constructor(private userService: UserService, private otpAuthService: OtpAuthService) { }
+  
   fileToUplaod: File = null;
+  
   ngOnInit() {
     this.params = this.user['id'];
   }
@@ -24,11 +27,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.params.unsubscribe();
   }
+  
   handelFileInput(file: FileList) {
     this.fileToUplaod = file.item(0);
   }
+  
   updateUser(user) {
-
     const fData: FormData = new FormData();
     fData.append('_method', 'PUT');
     for (let key in user) {
@@ -45,10 +49,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         (user: any) => {
           this.user = user.user;
           localStorage.setItem('profile_image', (user.image || ''));
-          this.authService.triggerUpdateProfileImageObservable();
+          // Remove the Auth0-specific profile image trigger since OTP auth doesn't handle this
           this.status = 'success';
           this.message = user['message'];
-          setTimeout(() => {    //<<<---    using ()=> syntax
+          setTimeout(() => {
             this.editingmode.emit(false);
           }, 3000);
         },

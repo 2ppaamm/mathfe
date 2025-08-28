@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { CanActivate } from '@angular/router';
-import { AuthService } from './auth.service';
+import { CanActivate, Router } from '@angular/router';
+import { OtpAuthService } from './otp-auth.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
+  constructor(private otpAuthService: OtpAuthService, private router: Router) {}
 
-  constructor(private auth: AuthService, private router: Router) {}
-
-  canActivate() {
-    if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['/home']);
+  canActivate(): boolean {
+    if (this.otpAuthService.isAuthenticated()) {
+      return true;
+    } else {
+      this.router.navigate(['/']);
       return false;
     }
-    return true;
   }
-
 }

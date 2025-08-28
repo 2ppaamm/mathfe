@@ -1,15 +1,17 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { OtpAuthService } from './otp-auth.service';
 
-import { AuthGuardService } from './auth-guard.service';
+@Injectable()
+export class AuthGuardService implements CanActivate {
+  constructor(private otpAuthService: OtpAuthService, private router: Router) {}
 
-describe('AuthGuardService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [AuthGuardService]
-    });
-  });
-
-  it('should be created', inject([AuthGuardService], (service: AuthGuardService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+  canActivate(): boolean {
+    if (this.otpAuthService.isAuthenticated()) {
+      return true;
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
+  }
+}

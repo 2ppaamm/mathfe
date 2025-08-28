@@ -36,8 +36,6 @@ import { AdminCourseEditComponent } from './admin/admin-course-edit/admin-course
 import { AdminCourseDeleteComponent } from './admin/admin-course-list/modal/admin-course-delete/admin-course-delete.component';
 import { AdminUserListComponent } from './admin/admin-user-list/admin-user-list.component';
 import { AdminUserReportComponent } from './admin/admin-user-report/admin-user-report.component';
-import { AuthService } from './services/auth.service';
-import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LandingComponent } from './landing/landing.component';
 import { MemberComponent } from './member/member.component';
@@ -62,7 +60,6 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { RouterModule } from '@angular/router';
 import { QuizComponent } from './member/quiz/quiz.component';
 import { MemberDashboardComponent } from './member/member-dashboard.component';
-import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 import { UserProfileComponent } from './member/user-profile/user-profile.component';
 import { TrackCreateComponent } from './member/track-create/track-create.component';
@@ -157,7 +154,8 @@ import { ClassManagementSharedComponent } from './member/class-management-shared
 import { EnrolledClassComponent } from './member/enrolled-class/enrolled-class.component'
 import { AdminEnrollmentUserDetailModalComponent } from './admin/admin-enrolment-list/modal/admin-enrollment-user-detail-modal/admin-enrollment-user-detail-modal.component';
 import { AdminEnrollmentHouseDetailModalComponent } from './admin/admin-enrolment-list/modal/admin-enrollment-house-detail-modal/admin-enrollment-house-detail-modal.component';
-
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 //Angular Material
 import { AngularMaterialModule } from './angularmaterial.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -175,9 +173,8 @@ import { AdminQuizAddComponent } from './admin/admin-quiz-add/admin-quiz-add.com
 import { AdminQuizListComponent } from './admin/admin-quiz-list/admin-quiz-list.component';
 import { AdminQuizDeleteComponent } from './admin/admin-quiz-delete/admin-quiz-delete.component';
 import { AdminQuizEditComponent } from './admin/admin-quiz-edit/admin-quiz-edit.component'
-export function tokenGetter() {
-  return localStorage.getItem("token");
-}
+import { OtpLoginComponent } from './OTP/otp-login.component';
+import { OtpAuthService } from './services/otp-auth.service';
 
 @NgModule({
   declarations: [
@@ -217,7 +214,6 @@ export function tokenGetter() {
     LeaderboardComponent,
     QuizComponent,
     MemberDashboardComponent,
-    LoginComponent,
     PageNotFoundComponent,
     UserProfileComponent,
     TrackCreateComponent,
@@ -305,7 +301,8 @@ export function tokenGetter() {
     AdminQuizAddComponent,
     AdminQuizListComponent,
     AdminQuizDeleteComponent,
-    AdminQuizEditComponent
+    AdminQuizEditComponent,
+    OtpLoginComponent
   ],
   imports: [
     routes,
@@ -317,24 +314,6 @@ export function tokenGetter() {
     ChartsModule,
     NgxPayPalModule,
     SelectDropDownModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        whitelistedDomains: [
-          'localhost:4200',
-          'localhost',
-          'devapi.pamelalim.me',
-          'localhost:8000',
-          'quiz.pamelalim.me',
-          'api.pamelalim.me',
-          'math.pamelalim.me',
-          'quiz.allgifted.com',
-          'mathapi.pamelalim.me',
-          'devapi.allgifted.com',
-          'math.allgifted.com'
-        ]
-      }
-    }),
     AngularMaterialModule,
     BrowserAnimationsModule,
     AngularEditorModule,
@@ -346,10 +325,15 @@ export function tokenGetter() {
     ConfirmDialogComponent, AdminUserReportComponent, NotifyDialogComponent, AdminHouseTracksListComponent,
     AdminEnrollmentUserDetailModalComponent, AdminEnrollmentHouseDetailModalComponent, AdminAddTrackListComponent,
     AdminHouseSkillsTrackListComponent, AdminAddSkillComponent],
-  providers: [TrackService, CourseService, QuestionService, DashboardService,
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  TrackService, CourseService, QuestionService, DashboardService,
     HouseService, FieldService, TypeService, UnitService, PermissionService, LevelService,
     DifficultyService, RoleService,
-    UserService, AuthService, AuthGuardService, HouseTrackService,
+    UserService, OtpAuthService, AuthGuardService, HouseTrackService,
     SkillService, SkillTrackService, ModalService, HelperService, EnrolmentService],
   bootstrap: [AppComponent]
 })
